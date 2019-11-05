@@ -3,7 +3,7 @@
 
 int stepsPerRev = 4096;
 
-Stepper mystepper(stepsPerRev, 32,33,25,26);
+Stepper mystepper(stepsPerRev, 32,25,33,27);
 
 Servo myServo;
 
@@ -32,18 +32,18 @@ void setup() {
   myServo.setPeriodHertz(50);
   myServo.attach(servoPin);
 
-  myServo.write(0);
+  myServo.write(1);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //mystepper.setSpeed(50);
+  mystepper.setSpeed(1);
   
   mystepper.step(1); //1/360th of a rev
   
   stepCount = (stepCount + 1) % 4096;
 
-  delay(5);
+  delay(10);
 
 
   if(pos == 180){
